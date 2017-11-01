@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A toolkit for ligand-based screening">
+        <meta name="author" content="Sebastian Raschka">
+        <link rel="canonical" href="http://rasbt.github.io/screenlamp/user_guide/tools/index.html">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Tools - screenlamp</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link href="../../extra.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+         
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../index.html">screenlamp</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../../index.html">Home</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../installation/index.html">Installation</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../doc-overview/index.html">Overview</a>
+</li>
+
+                    
+                        
+<li class="active">
+    <a href="index.html">Tools</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../tools-tutorial-1/index.html">Toolkit Tutorial</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../pipeline-tutorial-1/index.html">Pipeline Tutorial</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="../../contact/index.html">Contact</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../changelog/index.html">Release Notes</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../license/index.html">License</a>
+</li>
+
+                    
+                        
+<li >
+    <a href="../../cite/index.html">Citing screenlamp</a>
+</li>
+
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../doc-overview/index.html">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../tools-tutorial-1/index.html">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                <li>
+                    <a href="https://github.com/rasbt/screenlamp">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+    
+        <li class="main active"><a href="#tools">Tools</a></li>
+        
+            <li><a href="#generate_conformers_omegapy">generate_conformers_omega.py</a></li>
+        
+            <li><a href="#generate_conformers_obabelpy">generate_conformers_obabel.py</a></li>
+        
+            <li><a href="#merge_id_filespy">merge_id_files.py</a></li>
+        
+            <li><a href="#overlay_molecules_shapeitpy">overlay_molecules_shapeit.py</a></li>
+        
+            <li><a href="#overlay_molecules_rocspy">overlay_molecules_rocs.py</a></li>
+        
+            <li><a href="#funcgroup_matchingpy">funcgroup_matching.py</a></li>
+        
+            <li><a href="#sort_rocs_mol2py">sort_rocs_mol2.py</a></li>
+        
+            <li><a href="#count_mol2py">count_mol2.py</a></li>
+        
+            <li><a href="#funcgroup_matching_selectionpy">funcgroup_matching_selection.py</a></li>
+        
+            <li><a href="#enumerate_conformerspy">enumerate_conformers.py</a></li>
+        
+            <li><a href="#id_to_mol2py">id_to_mol2.py</a></li>
+        
+            <li><a href="#funcgroup_distance_to_idpy">funcgroup_distance_to_id.py</a></li>
+        
+            <li><a href="#mol2_to_idpy">mol2_to_id.py</a></li>
+        
+            <li><a href="#datatable_to_idpy">datatable_to_id.py</a></li>
+        
+            <li><a href="#funcgroup_presence_to_idpy">funcgroup_presence_to_id.py</a></li>
+        
+    
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="tools">Tools</h1>
+<p>This page serves as a quick lookup reference for the different modules within screenlamp. Please see the <a href="../tools-tutorial-1">Toolkit Tutorial</a> for a more detailed explanation of the different modules and how they can be combined in a typical virtual screening pipeline.</p>
+<h2 id="generate_conformers_omegapy">generate_conformers_omega.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> generate_conformers_omega.py [-h] -i INPUT -o OUTPUT --executable
+</code></pre>
+<p>EXECUTABLE [--settings SETTINGS]
+<code>[--processes PROCESSES] [-v]</code><br />
+Wrapper running OpenEye OMEGA on one
+or more database partitions.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+Input directory with <code>.mol2</code> and <code>.mol2.gz</code> files.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+Directory for writing the output files.</li>
+<li><code>--executable EXECUTABLE</code><br />
+(Required.) The path or command for running
+OpenEye OMEGA2 on your system.</li>
+<li><code>--settings SETTINGS   (Optional.) OMEGA settings to use.</code>  </li>
+<li><code>--processes PROCESSES</code><br />
+(Optional, default: <code>1</code>.) Number of processes to run in parallel.
+If processes &gt; 0, the specified number of CPUs
+will be used.
+If processes = 0, all available CPUs will
+be used.
+If processes = -1, all available CPUs
+minus <code>processes</code> will be used.</li>
+<li><code>-v, --version</code><br />
+Show program's version number and exit</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python generate_conformers_omega.py\
+--input dbase_mol2\
+--output dbase_conformers/\
+--executable /.../omega2-2.5.1.4\
+--processes 0
+</code></pre>
+
+<h2 id="generate_conformers_obabelpy">generate_conformers_obabel.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> generate_conformers_obabel.py [-h] -i INPUT -o OUTPUT --executable
+</code></pre>
+<p>EXECUTABLE [--settings SETTINGS] [-v]
+Wrapper running OpenBabel Confab on one
+or more database partitions. Please see
+http://open-babel.readthedocs.io/en/latest/3DStructureGen/multipleconformers.html
+if you want to learn more about OpenBabel Confab.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+Input directory with <code>.mol2</code> and <code>.mol2.gz</code> files.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+Directory for writing the output files.</li>
+<li><code>--executable EXECUTABLE</code><br />
+(Required.) The path or command for running
+OpenBabel Confab on your system.</li>
+<li><code>--settings SETTINGS   (Optional.) OpenBabel settings to use.</code>  </li>
+<li><code>-v, --version</code><br />
+Show program's version number and exit</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python generate_conformers_obabel.py\
+--input dbase_mol2/\
+--output dbase_conformers/\
+--executable /.../obabel
+</code></pre>
+
+<h2 id="merge_id_filespy">merge_id_files.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> merge_id_files.py [-h] -i1 INPUT1 -i2 INPUT2 -o OUTPUT [--version]
+</code></pre>
+<p>Merges two Molecule ID files
+(e.g., created via <code>datatable_to_id.py</code>, <code>funcgroup_presence_to_id.py</code>
+or <code>mol2_to_id.py</code>) into a single ID file
+while preventing duplicate entries.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i1 INPUT1, --input1 INPUT1</code><br />
+(Required.) Input ID file that contains molecule
+IDs (one ID per line).</li>
+<li><code>-i2 INPUT2, --input2 INPUT2</code><br />
+(Required.) Input ID file that contains molecule
+IDs (one ID per line).</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Path to the output ID file.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python merge_id_files.py\
+--input1 mol2s_1.txt\
+--input2 mol2s_2.txt\
+--output merged.txt
+</code></pre>
+
+<h2 id="overlay_molecules_shapeitpy">overlay_molecules_shapeit.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> overlay_molecules_shapeit.py [-h] -i INPUT -o OUTPUT --query QUERY
+</code></pre>
+<p>--executable EXECUTABLE
+<code>[--settings SETTINGS] [-v]</code><br />
+Wrapper running Silicos-it Shape-it on one
+or more database partitions.
+For more information about Shape-it, please see http://silicos-it.be.s3-website-eu-west-1.amazonaws.com/software/shape-it/1.0.1/shape-it.html</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+Path to input directory containing the database
+molecules in <code>.mol2</code> and/or <code>.mol2.gz</code> format.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Directory path for writing the <code>.mol2</code>
+overlays and Shape-it score/report (<code>.rpt</code>) files.</li>
+<li><code>--query QUERY         (Required.) Path to the query molecule</code><br />
+in <code>.mol2</code> and/or <code>.mol2.gz</code> format.
+The query molecule file could be a single
+structure of multiple-conformers of the same
+structure. If a multi-conformer file is
+submitted, please make sure that all
+conformers in the mol2 file have the same
+molecule ID/Name.</li>
+<li><code>--executable EXECUTABLE</code><br />
+(Required.) The path or command for running
+Slicos-it Shape-it on your system.</li>
+<li><code>--settings SETTINGS   (Optional, default:" --rankBy Tanimoto")</code><br />
+shape-it settings to use.</li>
+<li><code>-v, --version</code><br />
+Show program's version number and exit</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python overlay_molecules_shapeit.py\
+--input database_conformers/\
+--output shapeit_overlays/\
+--executable 'shape-it'\
+--query query.mol2\
+--settings &quot;--rankby Tanimoto
+</code></pre>
+
+<h2 id="overlay_molecules_rocspy">overlay_molecules_rocs.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> overlay_molecules_rocs.py [-h] -i INPUT -o OUTPUT --query QUERY
+</code></pre>
+<p>--executable EXECUTABLE [--settings SETTINGS]
+<code>[--processes PROCESSES] [-v]</code><br />
+Wrapper running OpenEye ROCS on one
+or more database partitions.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+Path to input directory containing the database
+molecules in <code>.mol2</code> and/or <code>.mol2.gz</code> format.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Directory path for writing the <code>.mol2</code>
+overlay ROCS status and ROCS report (<code>.rpt</code>) files.</li>
+<li><code>--query QUERY         (Required.) Path to the query molecule</code><br />
+in <code>.mol2</code> and/or <code>.mol2.gz</code> format.
+The query molecule file could be a single
+structure of multiple-conformers of the same
+structure. If a multi-conformer file is
+submitted, please make sure that all
+conformers in the mol2 file have the same
+molecule ID/Name.</li>
+<li><code>--executable EXECUTABLE</code><br />
+(Required.) The path or command for running
+OpenEye ROCS on your system.</li>
+<li><code>--settings SETTINGS   (Optional, default:" -rankby TanimotoCombo -maxhits 0 -besthits 0 -progress percent")</code><br />
+ROCS settings to use.</li>
+<li><code>--processes PROCESSES</code><br />
+(Optional, default: <code>1</code>.) Number of processes to run in parallel.
+If processes &gt; 0, the specified number of CPUs
+will be used.
+If processes = 0, all available CPUs will
+be used.
+If processes = -1, all available CPUs
+minus <code>processes</code> will be used.</li>
+<li><code>-v, --version</code><br />
+Show program's version number and exit</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python overlay_molecules_rocs.py\
+--input database_conformers/\
+--output rocs_overlays/\
+--executable /.../rocs-3.2.1.4\
+--query query.mol2\
+--settings &quot;-rankby TanimotoCombo -maxhits 0 -besthits 0 -progress percent&quot;\
+--processes 0
+</code></pre>
+
+<h2 id="funcgroup_matchingpy">funcgroup_matching.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> funcgroup_matching.py [-h] -i INPUT -o OUTPUT [-d MAX_DISTANCE]
+</code></pre>
+<p><code>[--processes PROCESSES] [-v VERBOSE] [--version]</code><br />
+Generates tab-separated tables with containing atom
+type and charge information from matching
+atoms in pair-wise overlays.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Path to a directory containing pairs
+of <code>*_query.mol2</code>/<code>.mol2.gz</code>
+and <code>*_dbase.mol2</code>/<code>.mol2.gz</code> files</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Path to a directory for writing
+the output files</li>
+<li><code>-d MAX_DISTANCE, --max_distance MAX_DISTANCE</code><br />
+(Optional, default: <code>1.3</code>.) The maximum distance,
+in angstroms, the
+overlayed atoms can be apart from each
+other for being considered a match.
+For instance, a --max_distance 1.3 (default)
+would count atoms as a match if they
+are within 0 and 1.3 angstroms
+to the target atom.</li>
+<li><code>--processes PROCESSES</code><br />
+(Optional, default: <code>1</code>.) Number of processes to run in parallel.
+If processes &gt; 0, the specified number of CPUs
+will be used.
+If processes = 0, all available CPUs will
+be used.
+If processes = -1, all available CPUs
+minus <code>processes</code> will be used.</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+(Optional, default: <code>1</code>.) Verbosity level. If 0, does not print any output.
+If 1 (default), prints the file currently processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python funcgroup_matching.py\
+--input rocs_overlays_sorted/\
+--output matching_tables/\
+--max_distance 1.3\
+--processes 0
+</code></pre>
+
+<h2 id="sort_rocs_mol2py">sort_rocs_mol2.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> sort_rocs_mol2.py [-h] -i INPUT -o OUTPUT --query QUERY [-s SORTBY]
+</code></pre>
+<p><code>[--selection SELECTION] [--separator SEPARATOR]</code><br />
+<code>[--id_suffix ID_SUFFIX] [-v VERBOSE] [--version]</code><br />
+Sorts ROCS results by score and creates
+separate .mol2 files for the database and query molecules.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Input directory with results from a ROCS run.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Directory path for writing the <code>.mol2</code> overlay
+ROCS status and ROCS report (<code>.rpt</code>) files</li>
+<li><code>--query QUERY         (Required.) Path to the query molecule</code><br />
+in <code>.mol2</code> and/or <code>.mol2.gz</code> format.
+The query molecule file could be a single
+structure of multiple-conformers of the same
+structure. If a multi-conformer file is
+submitted, please make sure that all
+conformers in the mol2 file have the same
+molecule ID/Name.</li>
+<li><code>-s SORTBY, --sortby SORTBY</code><br />
+(Optional, default: <code>"TanimotoCombo,ColorTanimoto"</code>)
+Score column(s) in ROCS report files that
+the structures should be sorted by.</li>
+<li><code>--selection SELECTION</code><br />
+(Optional, default: <code>"(TanimotoCombo &gt;= 1.0)) &amp; (ColorTanimoto &gt;= 0.25)"</code>)
+Selection string to exclude molecules above
+or below a certain score threshold. By default
+all molecules with a ColorTanimoto score smaller than 0.25
+and a TanimotoCombo score smaller than 1.0 will be disregarded.</li>
+<li><code>--separator SEPARATOR</code><br />
+(Optional, default: <code>"\t"</code>.) Column separator used
+in the input table.
+Assumes tab-separated values by default.</li>
+<li><code>--id_suffix ID_SUFFIX</code><br />
+(Optional, default: <code>"False"</code>.)
+If <code>--id_suffix "True"</code>, a molecule ID suffix
+will be added to the query
+molecules in the order the ROCS query molecules
+appear in a multi-conformer query file.
+For instance, if all query molecules are labeled "3kPZS",
+then the same structures in the output file are labeled
+3kPZS_1, 3kPZS_2, ... Note that those modified conformer
+will correspond to the conformer names in the ROCS report
+tables. However, they may appear in an unsorted order in
+the _query files, which are sorted by the overlay score
+of the database molecules. For example, if the
+database molecule is called ZINC123_112, first
+entry in the _query file that corresponds to *_dbase
+file may by labeled 3kPZS_11 if the 11th 3kPZS conformer
+is the best match according to ROCS.</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+Verbosity level. If 0, does not print any output.
+If 1 (default), prints the file currently
+processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python sort_rocs_mol2.py -i rocs_results/\
+--output rocs_sorted/ --query mol.mol2\
+--sortby TanimotoCombo,ColorTanimoto\
+--selection &quot;(TanimotoCombo &gt;= 0.75) &amp; (ColorTanimoto &gt;= 0.1)&quot;
+</code></pre>
+
+<h2 id="count_mol2py">count_mol2.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> count_mol2.py [-h] -i INPUT [-v]
+</code></pre>
+<p>A command line tool for counting the number of molecules in MOL2 files.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Path to a <code>.mol2</code> or <code>.mol2.gz</code>file,
+or a directory containing <code>.mol2</code>/<code>.mol2.gz</code> files.</li>
+<li><code>-v, --version</code><br />
+Show program's version number and exit</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python count_mol2.py -i mol2_dir/
+python count_mol2.py -i partition_1.mol2
+</code></pre>
+
+<h2 id="funcgroup_matching_selectionpy">funcgroup_matching_selection.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> funcgroup_matching_selection.py [-h] -i INPUT [--input_mol2 INPUT_MOL2]
+</code></pre>
+<p>-o OUTPUT
+<code>[--atomtype_selection ATOMTYPE_SELECTION]</code><br />
+<code>[--charge_selection CHARGE_SELECTION]</code><br />
+<code>[-v VERBOSE] [--version]</code><br />
+Selects molecules with certain functional group matching patterns after functional group matching.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Input directory with input <code>.tsv</code> tables (functional group files generated via <code>funcgroup_matching.py</code>).</li>
+<li><code>--input_mol2 INPUT_MOL2</code><br />
+(Optional.) Input directory with input <code>.mol2</code> structures (ROCS overlays
+generated via <code>sort_rocs_mol2.py</code>). If provided, the MOL2 structures
+corresponding to the selected matches will be extracted from the
+input_mol2 directory and written to the output directory for visual inspection,
+for example, using PyMOL.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Directory for writing the output files.</li>
+<li><code>--atomtype_selection ATOMTYPE_SELECTION</code><br />
+(Optional, default="") Selection condition for the atom types.
+For example, the following selection query will make a selection based on
+matching 2 atoms in the reference molecule, S1 and O2:
+"((S1 == 'S.3') | (S1 == 'S.o2')) --&gt; (O2 == 'O.2')".
+Here, S1 can either match an S.3 or an S.o2 atom in the database molecule.
+The second atom, O2, must match an atom of type O.2.</li>
+<li><code>--charge_selection CHARGE_SELECTION</code><br />
+(Optional, default="") Selection condition for the atom charges.
+For example, the following selection query will make a selection based on
+matching the charges in 2 atoms in the reference molecule, S1 and O2:
+"((S1 &gt;= 1.0)) --&gt; (O2 &lt;= -0.5)".
+Here, the atom that matches S1 has to have a positive charge, 1 or greater. The charge
+matching the second atom, O2, must be (partially) negative (-0.5 or smaller).</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+(Optional, default: <code>1</code>.) Verbosity level. If 0, does not print any
+output.
+If 1 (default), prints the file currently
+processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python funcgroup_matching_selection.py\
+--input 07_fgroup_matching_tables # generated via funcgroup_matching.py\
+--input_mol2 06_rocs_overlays_sorted # generated via sort_rocs_mol2.py\
+--output 08_funcgroup_selection\
+--atomtype_selection &quot;((S1 == 'S.3') | (S1 == 'S.o2')) --&gt; (O2 == 'O.2')&quot;\
+--charge_selection FGROUP_CHARGE &quot;((S1 &gt;= 1.0)) --&gt; (O2 &lt;= -0.5)&quot;
+</code></pre>
+
+<h2 id="enumerate_conformerspy">enumerate_conformers.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> enumerate_conformers.py [-h] -i INPUT -o OUTPUT [-v VERBOSE]
+</code></pre>
+<p><code>[--version]</code><br />
+Numbers molecules in MOL2 files by adding a suffix as index. For example, if there are three molecules in a MOL2 file, moleculeabc_0, moleculeabc_1, and moleculedef_0,
+those molecules will be relabeled to moleculeabc_0, moleculeabc_1, and moleculedef_0.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Path to a <code>.mol2</code> or <code>.mol2.gz</code>file,
+or a directory containing <code>.mol2</code>/<code>.mol2.gz</code> files.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Directory path for writing the numbered MOL2s</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+Verbosity level. If 0, does not print any output.
+If 1 (default), prints the file currently
+processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python enumerate_conformers.py -i conformer_mol2s/\
+--output numbered_conformers/
+</code></pre>
+
+<h2 id="id_to_mol2py">id_to_mol2.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> id_to_mol2.py [-h] -i INPUT --id_file ID_FILE -o OUTPUT
+</code></pre>
+<p><code>[-w INCLUDELIST] [-v VERBOSE] [--version]</code><br />
+Create filtered MOL2 files from ID and input MOL2 files.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Input <code>.mol2</code> or <code>.mol2.gz</code> file, or a directory of MOL2 files.</li>
+<li><code>--id_file ID_FILE     (Required.) Input ID file that contains molecule</code><br />
+IDs (one ID per line).</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Output directory path for the
+filtered MOL2 files.</li>
+<li><code>-w INCLUDELIST, --includelist INCLUDELIST</code><br />
+(Optional, default: <code>True</code>.) Uses ID file as includelist if True (default).
+Uses ID file as excludelist if False.</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+(Optional, default: <code>1</code>.) Verbosity level. If 0, does not print any
+output.
+If 1 (default), prints the file currently
+processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python id_to_mol2.py --input mol2_dir/\
+--id_file ids.txt\
+--includelist True\
+--output filtered_mol2_dir/
+</code></pre>
+
+<h2 id="funcgroup_distance_to_idpy">funcgroup_distance_to_id.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> funcgroup_distance_to_id.py [-h] -i INPUT -o OUTPUT -s SELECTION -d
+</code></pre>
+<p>DISTANCE [--processes PROCESSES]
+<code>[-v VERBOSE] [--version]</code><br />
+A command line tool for filtering mol2 files
+by the distance of two atoms or functional groups.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Path to a <code>.mol2</code> or <code>.mol2.gz</code> file,
+or a directory containing <code>.mol2</code>/<code>.mol2.gz</code>files.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Directory for writing the output files.</li>
+<li><code>-s SELECTION, --selection SELECTION</code><br />
+(Required.) Selection condition for the atom distance checks.
+1) Selection example to compare 2 atom types:
+<code>"(atom_type == 'S.o2') --&gt; (atom_type == 'O.2')"</code>.
+2) Selection example to consider either an S.o2 or S.3 atom to an O.2 atom:
+<code>"((atom_type == 'S.3') | (atom_type == 'S.o2')) --&gt; (atom_type == 'O.2')"</code>.
+3) Selection example using logical ORs on both sides:
+<code>"((atom_type == 'S.3') | (atom_type == 'S.o2')) --&gt;  ((atom_type == 'O.2') | (atom_type == 'O.3'))"</code>.</li>
+<li><code>-d DISTANCE, --distance DISTANCE</code><br />
+(Required.) A distance range formatted
+as "lowerbound-upperbound".
+For example, if 13-20 is provided as an
+argument, two atoms are considered a match
+if they are not closer than 13 angstroms and
+not farther than 20 angstroms.</li>
+<li><code>--processes PROCESSES</code><br />
+(Optional, default: <code>1</code>.) Number of processes to run in parallel.
+If processes &gt; 0, the specified number of CPUs
+will be used.
+If processes = 0, all available CPUs will
+be used.
+If processes = -1, all available CPUs
+minus <code>processes</code> will be used.</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+(Optional, default: <code>1</code>.) Verbosity level. If 0, does not print any output.
+If 1 (default), prints the file currently processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python funcgroup_distance_to_id.py\
+--input mol2_dir/\
+--output ids.txt\
+--selection &quot;((atom_type == 'S.3') | (atom_type == 'S.o2')) --&gt; (atom_type == 'O.2')&quot;\
+--distance 13-20\
+--processes 0
+\# The example above selects those molecules
+\# that contain S.2 or S.o2 atom that is within
+\# a 13-20 angstroms distance to an 'O.2' (sp2/keto oxygen) atom
+</code></pre>
+
+<h2 id="mol2_to_idpy">mol2_to_id.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> mol2_to_id.py [-h] -i INPUT -o OUTPUT [-v VERBOSE] [--version]
+</code></pre>
+<p>Writes a file with molecule IDs from MOL2 files.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Input <code>.mol2</code> or <code>.mol2.gz</code> file,or a directory of MOL2 files.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Output path for the ID file. For example, <code>ids.txt</code>.</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+(Optional, default: <code>1</code>.) Verbosity level. If 0, does not print any output. If 1 (default), prints the file currently processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python mol2_to_id.py\
+--input mol2_dir\
+--output ids.txt
+</code></pre>
+
+<h2 id="datatable_to_idpy">datatable_to_id.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> datatable_to_id.py [-h] -i INPUT -o OUTPUT --id_column ID_COLUMN
+</code></pre>
+<p><code>[--separator SEPARATOR] [-s SELECTION] [-v VERBOSE]</code><br />
+<code>[--version]</code><br />
+Create a text file with molecule IDs from MOL2 files.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Path to a datatable file where each
+row represents a molecule and each columns
+store the molecular features.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Output path for the ID file (for example, <code>ids.txt</code>).</li>
+<li><code>--id_column ID_COLUMN</code><br />
+(Required.) Name of the Molecule ID column.</li>
+<li><code>--separator SEPARATOR</code><br />
+(Optional, default: <code>"  "</code>.) Column separator used
+in the input table.
+Assumes tab-separated values by default.</li>
+<li><code>-s SELECTION, --selection SELECTION</code><br />
+(Optional, default: <code>None</code>.) A conditional selection string:
+Single column selection example: <code>"(MWT &gt; 500)"</code>.  Logical OR example: <code>"(MWT &gt; 500) | (MWT &lt; 200)"</code>. Logical AND example: <code>"(NRB &lt;= 7) &amp; (MWT &gt; 200)"</code>.</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+(Optional, default: <code>1</code>.) Verbosity level. If 0, does not print any
+output.
+If 1 (default), prints the file currently
+processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python datatable_to_id.py\
+--input table.txt\
+--output ids.txt\
+--id_column ZINC_ID\
+--selection &quot;(NRB &lt;= 7) &amp; (MWT &gt; 200)&quot;
+</code></pre>
+
+<h2 id="funcgroup_presence_to_idpy">funcgroup_presence_to_id.py</h2>
+<p><strong>Usage:</strong></p>
+<pre><code> funcgroup_presence_to_id.py [-h] -i INPUT -o OUTPUT -s SELECTION
+</code></pre>
+<p><code>[--processes PROCESSES] [-v VERBOSE]</code><br />
+<code>[--version]</code><br />
+Checking molecules base on the presence
+of certain atoms or functional groups and writing the results to a text file.</p>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-h, --help</code><br />
+Show this help message and exit</li>
+<li><code>-i INPUT, --input INPUT</code><br />
+(Required.) Input directory with <code>.mol2</code> and <code>.mol2.gz</code> files.</li>
+<li><code>-o OUTPUT, --output OUTPUT</code><br />
+(Required.) Directory for writing the output files.</li>
+<li><code>-s SELECTION, --selection SELECTION</code><br />
+Selection condition for the atom presence checks.
+1) Require 2 atom types to be present:
+"(atom_type == 'S.o2') --&gt; (atom_type == 'O.2')"
+2) Selection example to consider either an S.o2 or S.3 atom and a O.2 atom to be present:
+"((atom_type == 'S.3') | (atom_type == 'S.o2')) --&gt; (atom_type == 'O.2')"
+3) Selection example using logical ORs on both sides:
+"((atom_type == 'S.3') | (atom_type == 'S.o2')) --&gt;  ((atom_type == 'O.2') | (atom_type == 'O.3'))"</li>
+<li><code>--processes PROCESSES</code><br />
+(Optional, default: <code>1</code>.) Number of processes to run in parallel.
+If processes &gt; 0, the specified number of CPUs
+will be used.
+If processes = 0, all available CPUs will
+be used.
+If processes = -1, all available CPUs
+minus <code>processes</code> will be used.</li>
+<li><code>-v VERBOSE, --verbose VERBOSE</code><br />
+(Optional, default: <code>1</code>.) Verbosity level. If 0, does not print any
+output.
+If 1 (default), prints the file currently
+processing.</li>
+<li><code>--version             show program's version number and exit</code>  </li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code>python funcgroup_presence_to_id.py --input mol2s/\
+--output mol2ids.txt\
+--selection &quot;((atom_type == 'S.3') | (atom_type == 'S.o2')) --&gt; (atom_type == 'O.2')&quot;\
+--processes 0
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+                <center>Copyright &copy; 2017 Michigan State University. Developed in the <a href="http://www.kuhnlab.bmb.msu.edu">PSA Lab</a>.<br><em><a href="cite">Sebastian Raschka et al. 2017</a></em>.</center>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        <script src="../../mathjaxhelper.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
